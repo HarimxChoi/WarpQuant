@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">WarpQuant inference memory paths</title>
+  <desc id="desc">Weights, KV cache, and activations use separate quantization formats.</desc>
+  <style>
+    .bg{fill:#f7f8f5}.panel{fill:#fff;stroke:#cbd2cc}.accent{fill:#456b5a}.soft{fill:#e4eee8}.text{fill:#17221c;font:500 24px Inter,Arial,sans-serif}.label{fill:#617068;font:18px Inter,Arial,sans-serif}.small{fill:#617068;font:16px Inter,Arial,sans-serif}.line{stroke:#8ba596;stroke-width:2}
+    @media(prefers-color-scheme:dark){.bg{fill:#161b18}.panel{fill:#1e2521;stroke:#435048}.soft{fill:#26362e}.text{fill:#edf4ef}.label,.small{fill:#adbbb3}}
+  </style>
+  <rect class="bg" width="1200" height="420"/>
+  <text class="text" x="60" y="56">Three memory paths in M=1 decoding</text>
+  <rect class="soft" x="455" y="86" width="290" height="64" rx="4"/>
+  <text class="text" x="600" y="126" text-anchor="middle">Autoregressive decoder</text>
+  <path class="line" d="M600 150V190M210 190H990M210 190V222M600 190V222M990 190V222" fill="none"/>
+  <g transform="translate(60 222)"><rect class="panel" width="300" height="150" rx="4"/><rect class="accent" width="300" height="5"/><text class="label" x="22" y="42">Persistent</text><text class="text" x="22" y="82">Weights · 3.5 bpw base</text><text class="small" x="22" y="118">Hadamard + block-GPTQ</text></g>
+  <g transform="translate(450 222)"><rect class="panel" width="300" height="150" rx="4"/><rect class="accent" width="300" height="5"/><text class="label" x="22" y="42">Context state</text><text class="text" x="22" y="82">KV · K4/V4/R128</text><text class="small" x="22" y="118">online append + recent BF16</text></g>
+  <g transform="translate(840 222)"><rect class="panel" width="300" height="150" rx="4"/><rect class="accent" width="300" height="5"/><text class="label" x="22" y="42">Transient</text><text class="text" x="22" y="82">Activation · A8</text><text class="small" x="22" y="118">dynamic per-token scale</text></g>
+</svg>

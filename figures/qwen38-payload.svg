@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" role="img" aria-labelledby="title desc">
+  <title id="title">Qwen3.8-27B text payload</title>
+  <desc id="desc">Text-only payload comparison for BF16, Q4_K_M, IQ3_S, and WarpQuant.</desc>
+  <style>
+    .bg{fill:#f7f8f5}.track{fill:#dde2de}.bar{fill:#8d9992}.ours{fill:#456b5a}.text{fill:#17221c;font:500 22px Inter,Arial,sans-serif}.label{fill:#617068;font:18px Inter,Arial,sans-serif}.value{fill:#17221c;font:500 18px ui-monospace,monospace}.note{fill:#617068;font:15px Inter,Arial,sans-serif}
+    @media(prefers-color-scheme:dark){.bg{fill:#161b18}.track{fill:#2a332e}.bar{fill:#6f7e76}.ours{fill:#79a88f}.text,.value{fill:#edf4ef}.label,.note{fill:#adbbb3}}
+  </style>
+  <rect class="bg" width="1200" height="470"/>
+  <text class="text" x="60" y="54">Qwen3.8-27B · text-backbone payload</text>
+  <g transform="translate(0 88)"><text class="label" x="60" y="30">BF16</text><rect class="track" x="250" y="5" width="780" height="34"/><rect class="bar" x="250" y="5" width="780" height="34"/><text class="value" x="1050" y="30">50.11 GiB</text></g>
+  <g transform="translate(0 170)"><text class="label" x="60" y="30">Q4_K_M</text><rect class="track" x="250" y="5" width="780" height="34"/><rect class="bar" x="250" y="5" width="240" height="34"/><text class="value" x="1050" y="30">15.41 GiB</text></g>
+  <g transform="translate(0 252)"><text class="label" x="60" y="30">IQ3_S</text><rect class="track" x="250" y="5" width="780" height="34"/><rect class="bar" x="250" y="5" width="180" height="34"/><text class="value" x="1050" y="30">11.57 GiB</text></g>
+  <g transform="translate(0 334)"><text class="label" x="60" y="30">WarpQuant</text><rect class="track" x="250" y="5" width="780" height="34"/><rect class="ours" x="250" y="5" width="176" height="34"/><text class="value" x="1050" y="30">11.32 GiB</text></g>
+  <text class="note" x="60" y="438">26,895,998,464 text parameters · vision and MTP excluded</text>
+</svg>

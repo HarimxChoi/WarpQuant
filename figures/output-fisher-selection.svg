@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">Output-Fisher recovery selection</title>
+  <desc id="desc">Output-Fisher selects 19,499 columns versus 9,221 under the same 0.05 bpw budget.</desc>
+  <style>
+    .bg{fill:#f7f8f5}.track{fill:#dde2de}.base{fill:#8d9992}.ours{fill:#456b5a}.text{fill:#17221c;font:500 22px Inter,Arial,sans-serif}.label{fill:#617068;font:18px Inter,Arial,sans-serif}.value{fill:#17221c;font:500 20px ui-monospace,monospace}.axis{stroke:#aeb8b1;stroke-width:1}
+    @media(prefers-color-scheme:dark){.bg{fill:#161b18}.track{fill:#2a332e}.base{fill:#6f7e76}.ours{fill:#79a88f}.text,.value{fill:#edf4ef}.label{fill:#adbbb3}.axis{stroke:#435048}}
+  </style>
+  <rect class="bg" width="1200" height="360"/>
+  <text class="text" x="60" y="54">Recovered columns under the same +0.05 bpw budget</text>
+  <text class="label" x="60" y="132">Activation × residual</text><rect class="track" x="300" y="105" width="760" height="38"/><rect class="base" x="300" y="105" width="360" height="38"/><text class="value" x="1080" y="132">9,221</text>
+  <text class="label" x="60" y="222">Output-Fisher</text><rect class="track" x="300" y="195" width="760" height="38"/><rect class="ours" x="300" y="195" width="760" height="38"/><text class="value" x="1080" y="222">19,499</text>
+  <line class="axis" x1="300" y1="278" x2="1060" y2="278"/><text class="label" x="300" y="310">0</text><text class="label" x="1060" y="310" text-anchor="end">20k columns</text>
+</svg>

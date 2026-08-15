@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 370" role="img" aria-labelledby="title desc">
+  <title id="title">WarpQuant dual-domain flow</title>
+  <desc id="desc">Compression occurs in a signed Hadamard domain and recovery columns are selected in the original domain.</desc>
+  <style>
+    .bg{fill:#f7f8f5}.panel{fill:#fff;stroke:#cbd2cc;stroke-width:2}.focus{fill:#e4eee8;stroke:#456b5a;stroke-width:3}.text{fill:#17221c;font:500 22px Inter,Arial,sans-serif}.label{fill:#617068;font:16px Inter,Arial,sans-serif}.formula{fill:#456b5a;font:500 18px ui-monospace,monospace}.arrow{fill:none;stroke:#8ba596;stroke-width:3;marker-end:url(#m)}
+    @media(prefers-color-scheme:dark){.bg{fill:#161b18}.panel{fill:#1e2521;stroke:#435048}.focus{fill:#26362e}.text{fill:#edf4ef}.label{fill:#adbbb3}.formula{fill:#9dc8ae}}
+  </style>
+  <defs><marker id="m" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0L10 3L0 6Z" fill="#8ba596"/></marker></defs>
+  <rect class="bg" width="1200" height="370"/>
+  <text class="text" x="60" y="54">Dual-domain quantization</text>
+  <g transform="translate(60 100)"><rect class="panel" width="250" height="180" rx="4"/><text class="label" x="24" y="38">Original domain</text><text class="text" x="24" y="88">W, X</text><text class="label" x="24" y="126">activation energy</text><text class="label" x="24" y="152">output-loss sensitivity</text></g>
+  <path class="arrow" d="M310 190H410"/>
+  <g transform="translate(420 100)"><rect class="focus" width="360" height="180" rx="4"/><text class="label" x="24" y="38">Rotated domain</text><text class="text" x="24" y="82">Signed Hadamard</text><text class="formula" x="24" y="116">R = HD · Wᵣ = WRᵀ</text><text class="label" x="24" y="150">Q3 · group 128 · block-GPTQ</text></g>
+  <path class="arrow" d="M780 190H880"/>
+  <g transform="translate(890 100)"><rect class="panel" width="250" height="180" rx="4"/><text class="label" x="24" y="38">Original recovery</text><text class="text" x="24" y="82">Output-Fisher</text><text class="label" x="24" y="122">rank weak columns</text><text class="formula" x="24" y="154">+0.05 bpw</text></g>
+  <text class="formula" x="600" y="330" text-anchor="middle">compress in rotated coordinates · select recovery in original coordinates</text>
+</svg>

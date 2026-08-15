@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "warpquant"
+version = "0.1.0"
+description = "Dual-domain LLM quantization via Hadamard rotation and Output-Fisher sensitivity"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Harim Choi", email = "2.harim.choi@gmail.com" }]
+dependencies = ["torch>=2.1"]
+
+[tool.setuptools]
+py-modules = ["warpquant"]
