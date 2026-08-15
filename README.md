@@ -41,12 +41,14 @@ recovered = recover_columns(base_weight, weight, columns)
 
 All rates use the 26,895,998,464-parameter text backbone as the denominator. Commonsense is the macro average of fixed 1,000-example HellaSwag, WinoGrande, and PIQA screens.
 
-| Format | Text bpw | Payload | WT2 PPL ↓ | ARC-299 ↑ | MMLU-13,943 ↑ | Commonsense ↑ | GSM8K-500 ↑ |
+| Format | Text bpw | Payload | WT2 PPL ↓ | ARC-299 ↑ | MMLU-13,943 ↑ | Commonsense ↑ | GSM8K-500 flex ↑ |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| BF16 | 16.00 | 50.11 GiB | 6.9548 | 52.17 | 43.07 | 79.23 | — |
-| Q4_K_M | 4.92 | 15.41 GiB | 6.9656 | 50.84 | 42.90 | 79.23 | — |
-| IQ3_S | 3.6940 | 11.57 GiB | 7.1820 | 52.17 | 42.97 | 78.83 | — |
-| **WarpQuant R16E4H4** | **3.6165** | **11.32 GiB** | **7.4737** | **56.86** | **42.72** | **78.83** | **—** |
+| BF16 | 16.00 | 50.11 GiB | 6.9548 | 52.17 | 43.07 | 79.23 | 70.40 |
+| Q4_K_M | 4.92 | 15.41 GiB | 6.9656 | 50.84 | 42.90 | 79.23 | 75.20 |
+| IQ3_S | 3.6940 | 11.57 GiB | 7.1820 | 52.17 | 42.97 | 78.83 | 59.40 |
+| **WarpQuant R16E4H4** | **3.6165** | **11.32 GiB** | **7.4737** | **56.86** | **42.72** | **78.83** | **61.00** |
+
+GSM8K uses the same first 500 examples with 5-shot prompting. The table reports lm-evaluation-harness flexible-extract accuracy; strict-match scores are preserved in the released result archive.
 
 <img src="figures/release/qwen38-pareto.png" width="820" alt="Qwen3.8-27B quality-memory Pareto chart">
 

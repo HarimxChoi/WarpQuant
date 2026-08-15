@@ -22,10 +22,16 @@ PPL = [6.9548, 6.9656, 7.1820, 7.4737]
 ARC = [52.17, 50.84, 52.17, 56.86]
 MMLU = [43.07, 42.90, 42.97, 42.72]
 COMMONSENSE = [79.23, 79.23, 78.83, 78.83]
+GSM8K = [70.40, 75.20, 59.40, 61.00]
 
 
 def save(fig: plt.Figure, stem: str) -> None:
-    fig.savefig(OUT / f"{stem}.svg", bbox_inches="tight", facecolor=fig.get_facecolor())
+    svg_path = OUT / f"{stem}.svg"
+    fig.savefig(svg_path, bbox_inches="tight", facecolor=fig.get_facecolor())
+    svg_path.write_text(
+        "\n".join(line.rstrip() for line in svg_path.read_text(encoding="utf-8").splitlines()) + "\n",
+        encoding="utf-8",
+    )
     fig.savefig(OUT / f"{stem}.png", dpi=180, bbox_inches="tight", facecolor=fig.get_facecolor())
     plt.close(fig)
 
@@ -95,19 +101,19 @@ def benchmark_card() -> None:
     ax.text(0.06, 0.91, "WarpQuant · Qwen3.8-27B", fontsize=25, weight=600)
     ax.text(0.06, 0.858, "INT3 LLM quantization · text-backbone benchmark", fontsize=12, color=MUTED)
 
-    columns = ["Format", "Text bpw", "Payload", "WT2 PPL ↓", "ARC ↑", "MMLU ↑", "Commonsense ↑"]
+    columns = ["Format", "Text bpw", "Payload", "WT2 PPL ↓", "ARC ↑", "MMLU ↑", "Commonsense ↑", "GSM8K-500 ↑"]
     rows = [
-        ["BF16", "16.00", "50.11 GiB", "6.9548", "52.17", "43.07", "79.23"],
-        ["Q4_K_M", "4.92", "15.41 GiB", "6.9656", "50.84", "42.90", "79.23"],
-        ["IQ3_S", "3.6940", "11.57 GiB", "7.1820", "52.17", "42.97", "78.83"],
-        ["WarpQuant R16E4H4", "3.6165", "11.32 GiB", "7.4737", "56.86", "42.72", "78.83"],
+        ["BF16", "16.00", "50.11 GiB", "6.9548", "52.17", "43.07", "79.23", "70.40"],
+        ["Q4_K_M", "4.92", "15.41 GiB", "6.9656", "50.84", "42.90", "79.23", "75.20"],
+        ["IQ3_S", "3.6940", "11.57 GiB", "7.1820", "52.17", "42.97", "78.83", "59.40"],
+        ["WarpQuant R16E4H4", "3.6165", "11.32 GiB", "7.4737", "56.86", "42.72", "78.83", "61.00"],
     ]
-    x = [0.06, 0.33, 0.45, 0.58, 0.70, 0.80, 0.90]
+    x = [0.05, 0.27, 0.38, 0.49, 0.60, 0.70, 0.81, 0.92]
     top = 0.75
     row_h = 0.105
     ax.add_patch(FancyBboxPatch((0.045, top - 0.03), 0.91, 0.085, boxstyle="round,pad=0.006,rounding_size=0.008", facecolor=INK, edgecolor="none"))
     for xpos, label in zip(x, columns):
-        ax.text(xpos, top + 0.012, label, color=WHITE, fontsize=9.5, weight=600, ha="left" if label == "Format" else "center")
+        ax.text(xpos, top + 0.012, label, color=WHITE, fontsize=8.5, weight=600, ha="left" if label == "Format" else "center")
 
     for row_i, row in enumerate(rows):
         y = top - (row_i + 1) * row_h
@@ -115,7 +121,7 @@ def benchmark_card() -> None:
         edge = BLUE if row_i == 3 else GRID
         ax.add_patch(FancyBboxPatch((0.045, y - 0.025), 0.91, 0.085, boxstyle="round,pad=0.006,rounding_size=0.008", facecolor=face, edgecolor=edge, linewidth=1.4 if row_i == 3 else 0.8))
         for col_i, (xpos, value) in enumerate(zip(x, row)):
-            ax.text(xpos, y + 0.016, value, fontsize=10.5, weight=600 if row_i == 3 else 400, color=BLUE if row_i == 3 else INK, ha="left" if col_i == 0 else "center")
+            ax.text(xpos, y + 0.016, value, fontsize=9.5, weight=600 if row_i == 3 else 400, color=BLUE if row_i == 3 else INK, ha="left" if col_i == 0 else "center")
 
     ax.text(0.06, 0.19, "3.6165 bpw", fontsize=25, color=BLUE, weight=600)
     ax.text(0.06, 0.145, "lowest text payload", fontsize=10.5, color=MUTED)
@@ -123,7 +129,7 @@ def benchmark_card() -> None:
     ax.text(0.34, 0.145, "text-backbone payload", fontsize=10.5, color=MUTED)
     ax.text(0.62, 0.19, "56.86%", fontsize=25, color=BLUE, weight=600)
     ax.text(0.62, 0.145, "ARC-Challenge · 299", fontsize=10.5, color=MUTED)
-    ax.text(0.06, 0.065, "Commonsense = macro average of fixed 1,000-example HellaSwag, WinoGrande, and PIQA screens.", fontsize=9.5, color=MUTED)
+    ax.text(0.06, 0.065, "Commonsense: fixed 1,000-example task average · GSM8K: fixed 500 examples, 5-shot, flexible extract.", fontsize=9.5, color=MUTED)
     save(fig, "qwen38-benchmark-card")
 
 
