@@ -23,7 +23,7 @@ $$
 The recovery score combines input energy, quantization residual, and diagonal Output-Fisher sensitivity:
 
 $$
-S_c = \frac{H_{X,cc}\,E_{:,c}^{T}\operatorname{diag}(H_G)E_{:,c}}
+S_c = \frac{H_{X,cc}\,E_{:,c}^{T}\mathrm{diag}(H_G)E_{:,c}}
 {16d_{out}+32}.
 $$
 
