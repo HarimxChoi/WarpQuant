@@ -52,6 +52,24 @@ GSM8K uses the same first 500 examples with 5-shot prompting. The table reports 
 
 <img src="figures/release/qwen38-pareto.png" width="820" alt="Qwen3.8-27B quality-memory Pareto chart">
 
+## Qwen3.5-4B benchmark
+
+| Format | Text bpw | Payload | WT2 PPL ↓ | ARC-299 ↑ | MMLU-13,943 ↑ |
+|---|---:|---:|---:|---:|---:|
+| BF16 | 16.00 | 7.846 GiB | 8.3885 | 45.82 | 39.58 |
+| Q4_K_M | 5.13 | 2.523 GiB | 8.5472 | 48.83 | 39.48 |
+| IQ3_M | 4.09 | 2.015 GiB | 10.6976 | 42.81 | 37.41 |
+| **WarpQuant Fisher R16E4** | **3.6514** | **1.788 GiB** | **9.2494** | **46.15** | **38.13** |
+
+## Llama 3 8B benchmark
+
+| Format | Text bpw | Payload | WT2 PPL ↓ | ARC-299 ↑ | MMLU-13,943 ↑ |
+|---|---:|---:|---:|---:|---:|
+| BF16 | 16.00 | 14.965 GiB | 6.2559 | 50.50 | 41.04 |
+| Q4_K_M | 4.89 | 4.583 GiB | 6.4359 | 50.84 | 40.67 |
+| IQ3_S + imatrix | 3.66 | 3.429 GiB | 6.9929 | 44.15 | 39.87 |
+| **WarpQuant Fisher R16E4H4** | **3.6256** | **3.389 GiB** | **7.3446** | **45.49** | **38.99** |
+
 ## KV cache and activation ablation
 
 | Configuration | PPL ↓ | Δ PPL | Top-1 | KV compression @ 512 |
