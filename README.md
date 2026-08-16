@@ -2,7 +2,9 @@
 
 WarpQuant is an INT3 post-training quantization method for LLMs. It quantizes projection weights after a signed Hadamard rotation, reconstructs them in the original coordinates, and spends a small recovery budget on columns ranked by next-token loss sensitivity.
 
-[Technical report](https://harimxchoi.github.io/projects/warpquant) · [Qwen3.8-27B VLM](https://huggingface.co/HarimxChoi/WarpQuant-Qwen3.8-27B-R16E4H4) · [Qwen3.8-27B text model](https://huggingface.co/HarimxChoi/WarpQuant-Qwen3.8-27B-R16E4H4-Text)
+[Technical report](https://harimxchoi.github.io/projects/warpquant)
+
+Models: [Qwen3.8-27B VLM](https://huggingface.co/HarimxChoi/WarpQuant-Qwen3.8-27B-R16E4H4) · [Qwen3.8-27B text](https://huggingface.co/HarimxChoi/WarpQuant-Qwen3.8-27B-R16E4H4-Text) · [Qwen3.5-4B VLM](https://huggingface.co/HarimxChoi/WarpQuant-Qwen3.5-4B-R16E4V4) · [Qwen3.5-4B text](https://huggingface.co/HarimxChoi/WarpQuant-Qwen3.5-4B-R16E4-Text) · [Llama 3 8B](https://huggingface.co/HarimxChoi/WarpQuant-Llama-3-8B-R16E4H4)
 
 <img src="figures/release/warpquant-social-cover.png" width="820" alt="WarpQuant overview">
 
