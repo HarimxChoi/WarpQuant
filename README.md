@@ -1,6 +1,6 @@
 # WarpQuant: Dual-Domain LLM Quantization via Hadamard Rotation and Output-Fisher Sensitivity
 
-WarpQuant is an INT3 post-training quantization method for LLMs. It quantizes projection weights after a signed Hadamard rotation, reconstructs them in the original coordinates, and spends a small recovery budget on columns ranked by next-token loss sensitivity.
+WarpQuant is an post-training quantization method for LLMs. It quantizes projection weights after a signed Hadamard rotation, reconstructs them in the original coordinates, and spends a small recovery budget on columns ranked by next-token loss sensitivity.
 
 [Technical report](https://harimxchoi.github.io/projects/warpquant)
 
